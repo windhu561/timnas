@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Interaktif - Reasuransi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 500px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #6200ea;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .subheader {
+            background-color: #ede7f6;
+            color: #6200ea;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-style: italic;
+        }
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .input-section {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .input-section input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+        .input-section button {
+            padding: 10px 15px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-section button:hover {
+            background-color: #3700b3;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Website Interaktif - Reasuransi
+        </div>
+        <div class="subheader">
+            Dibuat oleh Windhu Prasetyo Simson
+        </div>
+        <div class="content">
+            <p>Selamat datang di website interaktif tentang Reasuransi! Anda dapat memilih nomor (1-4) untuk mendapatkan informasi terkait reasuransi:</p>
+            <ul>
+                <li><strong>1.</strong> Apakah Reasuransi itu?</li>
+                <li><strong>2.</strong> Apakah Treaty Reasuransi itu?</li>
+                <li><strong>3.</strong> Ciri-ciri Treaty Reasuransi?</li>
+                <li><strong>4.</strong> Berapa metode Reasuransi?</li>
+            </ul>
+            <div class="input-section">
+                <input type="text" id="user-input" placeholder="Ketik nomor 1-4..." />
+                <button onclick="sendMessage()">Kirim</button>
+            </div>
+            <div id="response" class="response"></div>
+        </div>
+    </div>
+
+    <script>
+        const responses = {
+            "1": "Reasuransi adalah mekanisme pengalihan risiko dari perusahaan asuransi (penanggung utama) kepada perusahaan reasuransi (penanggung ulang) untuk mengurangi beban keuangan akibat klaim besar.",
+            "2": "Treaty Reasuransi adalah perjanjian tertulis antara perusahaan asuransi dan perusahaan reasuransi. Dalam perjanjian ini, perusahaan asuransi menyerahkan sebagian risiko kepada perusahaan reasuransi.",
+            "3": "Ciri-ciri Treaty Reasuransi adalah:\n- Berlaku untuk periode tertentu, biasanya 12 bulan.\n- Mencakup portofolio polis atau kelas risiko tertentu.\n- Tunduk pada pembatasan-pembatasan yang telah diatur dalam perjanjian.",
+            "4": "Beberapa metode reasuransi yang umum digunakan adalah:\n- Reasuransi Perjanjian.\n- Reasuransi Fakultatif.\n- Reasuransi Facultative Obligatory.\n- Reasuransi Pools.\n- Reasuransi Treaty.",
+            "default": "Maaf, aku hanya bisa menjawab pertanyaan dengan nomor 1-4."
+        };
+
+        function sendMessage() {
+            const userInput = document.getElementById("user-input").value.trim();
+            if (!userInput) return;
+
+            // Get bot response
+            const botResponse = getBotResponse(userInput);
+
+            // Display response
+            document.getElementById("response").textContent = botResponse;
+
+            // Clear input field
+            document.getElementById("user-input").value = "";
+        }
+
+        function getBotResponse(input) {
+            return responses[input] || responses["default"];
+        }
+    </script>
+</body>
+</html>
